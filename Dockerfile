@@ -26,7 +26,7 @@ WORKDIR /root/
 COPY --from=builder /app/app .
 
 # Expose port 8080 for the application
-EXPOSE 8080
+EXPOSE 5000
 
 # Set environment variables (default values)
 ENV DB_HOST=localhost \
