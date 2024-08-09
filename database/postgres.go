@@ -2,9 +2,11 @@ package database
 
 import (
 	"fmt"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
+	"os"
 )
 
 var DB *gorm.DB
@@ -18,11 +20,12 @@ type Post struct {
 }
 
 func DatabaseConnection() {
-	host := "aws-0-us-east-1.pooler.supabase.com"
-	port := "6543"
-	dbName := "postgres"
-	dbUser := "postgres.fwryzxwqrujgfmrporkr"
-	password := "aRgBWU6kd4NDpnMA*2LnvJ-KzPA@zfZg"
+	err := godotenv.Load()
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	dbName := os.Getenv("DB_NAME")
+	dbUser := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
 	dsn := fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable", host, port, dbUser, dbName, password)
 
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
