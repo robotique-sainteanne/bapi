@@ -32,8 +32,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/my-app:${{ github.event.release.tag_name }} .
-          docker push ghcr.io/${{ github.repository_owner }}/my-app:${{ github.event.release.tag_name }}
+          docker build -t ghcr.io/${{ github.repository_owner }}/bapi:${{ github.event.release.tag_name }} .
+          docker push ghcr.io/${{ github.repository_owner }}/bapi:${{ github.event.release.tag_name }}
 
       - name: Logout from GitHub Container Registry
         run: docker logout ghcr.io
